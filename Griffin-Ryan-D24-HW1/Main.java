@@ -20,10 +20,8 @@ public class Main {
 				"Two players take turns removing as many markers of a single color as they wish.");
 		System.out.println("The player who removes the last marker wins.\n");
 
-		// Determine who goes first
 		boolean playerTurn = decideFirstPlayer();
 
-		// Game loop
 		while (true) {
 			displayMarkers();
 			if (playerTurn) {
@@ -39,7 +37,6 @@ public class Main {
 		}
 	}
 
-	// Method to decide who goes first
 	private static boolean decideFirstPlayer() {
 		while (true) {
 			System.out.print("Who goes first? Enter 'player' or 'computer': ");
@@ -54,7 +51,6 @@ public class Main {
 		}
 	}
 
-	// Method to display the current markers
 	private static void displayMarkers() {
 		System.out.println("Current markers:");
 		for (String color : markers.keySet()) {
@@ -63,7 +59,6 @@ public class Main {
 		System.out.println();
 	}
 
-	// Method for player's move
 	private static void playerMove() {
 		while (true) {
 			System.out.print("Enter your move as 'color:amount': ");
@@ -98,7 +93,6 @@ public class Main {
 		}
 	}
 
-	// Method for computer's move
 	private static void computerMove() {
 		// Check if there's a winning move available
 		String winningColor = findWinningMove();
@@ -118,7 +112,6 @@ public class Main {
 		}
 	}
 
-	// Method to check for a winning move
 	private static String findWinningMove() {
 		int sum = 0;
 		for (int count : markers.values()) {
@@ -135,7 +128,6 @@ public class Main {
 		return null;
 	}
 
-	// Method to check if the game is over
 	private static boolean isGameOver() {
 		for (int count : markers.values()) {
 			if (count > 0) {
@@ -145,7 +137,6 @@ public class Main {
 		return true;
 	}
 
-	// Method to display the winner
 	private static void displayWinner(boolean playerWon) {
 		System.out.println("");
 		if (playerWon) {
