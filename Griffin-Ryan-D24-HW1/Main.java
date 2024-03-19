@@ -94,7 +94,6 @@ public class Main {
 	}
 
 	private static void computerMove() {
-		// Check if there's a winning move available
 		String winningColor = findWinningMove();
 		if (winningColor != null) {
 			int maxAmount = markers.get(winningColor);
@@ -102,7 +101,6 @@ public class Main {
 			System.out.println("Computer removes " + amount + " markers from " + winningColor + ".");
 			markers.put(winningColor, markers.get(winningColor) - amount);
 		} else {
-			// Make a random move
 			String[] colors = markers.keySet().toArray(new String[0]);
 			String color = colors[random.nextInt(colors.length)];
 			int maxAmount = markers.get(color);
@@ -138,7 +136,7 @@ public class Main {
 	}
 
 	private static void displayWinner(boolean playerWon) {
-		System.out.println("");
+		System.out.println();
 		if (playerWon) {
 			System.out.println("Congratulations! You win!");
 		} else {
