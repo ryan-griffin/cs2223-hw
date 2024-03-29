@@ -43,13 +43,13 @@ public class Square {
 	}
 
 	private static int countWaysForSums() {
-		int[] dp = new int[sum + 1];
-		dp[0] = 1;
+		int[] sumCounts = new int[sum + 1];
+		sumCounts[0] = 1;
 		for (int i = 0; i < square.length; i++) {
 			for (int j = sum; j >= square[i]; j--) {
-				dp[j] += dp[j - square[i]];
+				sumCounts[j] += sumCounts[j - square[i]];
 			}
 		}
-		return dp[sum];
+		return sumCounts[sum];
 	}
 }
