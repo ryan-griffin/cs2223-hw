@@ -1,17 +1,10 @@
-public class EasyInversionCount {
+public class EasyInversionCount extends InversionCount {
 	public static void main(String[] args) {
-		if (args.length == 0) {
-			System.out.println("Usage: java EasyInversionCount <n> <n> ...");
-			System.exit(1);
-		}
-
-		int[] arr = new int[args.length];
-		for (int i = 0; i < args.length; i++) {
-			arr[i] = Integer.parseInt(args[i]);
-		}
+		int[] arr = parseArgs("Usage: java EasyInversionCount <n> <n> ...", args);
 
 		int inversions = countInversions(arr);
-		System.out.println("Number of inversions: " + inversions);
+
+		output(inversions);
 	}
 
 	private static int countInversions(int[] arr) {
