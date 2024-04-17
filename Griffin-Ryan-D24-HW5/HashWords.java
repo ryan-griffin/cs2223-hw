@@ -12,7 +12,7 @@ public class HashWords {
 		String filename = args[0].trim();
 		int c = 123;
 		int m = 997;
-		int[] hashTable = new int[m];
+		String[][] hashTable = new String[m][2];
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -22,7 +22,13 @@ public class HashWords {
 				for (String word : words) {
 					if (!word.isEmpty()) {
 						int hash = computeHash(word, c, m);
-						hashTable[hash]++;
+						while (hashTable[hash][0] != null && !hashTable[hash][0].equals(word)) {
+							hash = (hash + 1) % m;
+						}
+						if (hashTable[hash][0] == null) {
+							hashTable[hash][0] = word;
+							hashTable[hash][1] = Integer.toString(hash);
+						}
 					}
 				}
 			}
@@ -32,9 +38,7 @@ public class HashWords {
 			System.exit(1);
 		}
 
-		for (int i = 0; i < m; i++) {
-			System.out.println(i + ": " + hashTable[i]);
-		}
+		displayHashTable(hashTable);
 	}
 
 	private static int computeHash(String word, int c, int m) {
@@ -44,5 +48,13 @@ public class HashWords {
 			hash = (hash * c + (int) ch) % m;
 		}
 		return hash;
+	}
+
+	private static void displayHashTable(String[][] hashTable) {
+		for (int i = 0; i < hashTable.length; i++) {
+			if (hashTable[i][0] != null) {
+				System.out.println(i + ", " + hashTable[i][0] + ", " + hashTable[i][1]);
+			}
+		}
 	}
 }
