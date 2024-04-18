@@ -1,16 +1,19 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class HashWords {
-	public static void main(String[] args) {
-		if (args.length != 1) {
-			System.out.println("Usage: java HashWords <filename>");
-			System.exit(1);
-		}
+	private static Scanner scanner = new Scanner(System.in);
 
-		String filename = args[0].trim();
-		int c = 123;
+	public static void main(String[] args) {
+		System.out.print("Enter a file name: ");
+		String filename = scanner.nextLine().trim();
+
+		System.out.print("Enter a value for c: ");
+		int c = scanner.nextInt();
+		System.out.println();
+
 		int m = 997;
 		String[][] hashTable = new String[m][2];
 
@@ -116,5 +119,4 @@ public class HashWords {
 
 		return new int[] { maxStart, maxStart + maxLength - 1 };
 	}
-
 }
