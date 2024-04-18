@@ -10,11 +10,11 @@ public class HashWords {
 		System.out.print("Enter a file name: ");
 		String filename = scanner.nextLine().trim();
 
-		System.out.print("Enter a value for c: ");
-		int c = scanner.nextInt();
+		System.out.print("Enter a hash table size: ");
+		int m = scanner.nextInt();
 		System.out.println();
 
-		int m = 997;
+		int c = 123;
 		String[][] hashTable = new String[m][2];
 
 		try {
@@ -49,7 +49,7 @@ public class HashWords {
 
 		int[] longestEmptyArea = getLongestArea(hashTable, true);
 		System.out.println("Longest empty area: "
-				+ longestEmptyArea[0] + " to " + longestEmptyArea[1] + "\n");
+				+ longestEmptyArea[0] + " to " + longestEmptyArea[1]);
 
 		int[] longestNonEmptyArea = getLongestArea(hashTable, false);
 		System.out.println("Longest non-empty area: "
@@ -66,6 +66,7 @@ public class HashWords {
 	}
 
 	private static void displayHashTable(String[][] hashTable) {
+		System.out.println("Hash Table:");
 		for (int i = 0; i < hashTable.length; i++) {
 			if (hashTable[i][0] != null) {
 				System.out.println(i + ", " + hashTable[i][0] + ", " + hashTable[i][1]);
