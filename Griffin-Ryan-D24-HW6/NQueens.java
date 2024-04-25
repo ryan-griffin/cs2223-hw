@@ -19,9 +19,9 @@ public class NQueens {
 	}
 
 	private static int[] NextLegalPosition(int[] board, int n) {
-		do {
+		do
 			board = Successor(board, n);
-		} while (!isLegalPosition(board, n));
+		while (!isLegalPosition(board, n));
 		return board;
 	}
 
@@ -29,9 +29,8 @@ public class NQueens {
 		int[] nextBoard = Arrays.copyOf(board, n);
 		int i = n - 1;
 
-		while (i >= 0 && nextBoard[i] == n) {
+		while (i >= 0 && nextBoard[i] == n)
 			i--;
-		}
 
 		if (i < 0) {
 			Arrays.fill(nextBoard, 0);
@@ -40,9 +39,8 @@ public class NQueens {
 
 		nextBoard[i]++;
 
-		for (int j = i + 1; j < n; j++) {
+		for (int j = i + 1; j < n; j++)
 			nextBoard[j] = 0;
-		}
 
 		return nextBoard;
 	}
@@ -56,9 +54,8 @@ public class NQueens {
 				if (board[j] == 0)
 					continue;
 
-				if (board[i] == board[j] || Math.abs(board[i] - board[j]) == Math.abs(i - j)) {
+				if (board[i] == board[j] || Math.abs(board[i] - board[j]) == Math.abs(i - j))
 					return false;
-				}
 			}
 		}
 		return true;
