@@ -2,14 +2,16 @@ import java.util.Arrays;
 
 public class NQueens {
 	public static void main(String[] args) {
+		int n = 8;
+
 		int[] board1 = { 1, 6, 8, 3, 5, 0, 0, 0 };
-		printNextLegal(board1, 8);
+		printNextLegal(board1, n);
 
 		int[] board2 = { 1, 6, 8, 3, 7, 0, 0, 0 };
-		printNextLegal(board2, 8);
+		printNextLegal(board2, n);
 
 		int[] board3 = { 1, 6, 8, 3, 7, 4, 2, 5 };
-		printNextLegal(board3, 8);
+		printNextLegal(board3, n);
 	}
 
 	private static void printNextLegal(int[] board, int n) {
