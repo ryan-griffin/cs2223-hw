@@ -17,10 +17,10 @@ public class NQueens {
 	private static void printNextLegal(int[] board, int n) {
 		System.out.println(
 				"Next legal position from " + Arrays.toString(board) + " is "
-						+ Arrays.toString(NextLegalPosition(board, n)));
+						+ Arrays.toString(nextLegalPosition(board, n)));
 	}
 
-	private static int[] NextLegalPosition(int[] board, int n) {
+	private static int[] nextLegalPosition(int[] board, int n) {
 		do
 			board = Successor(board, n);
 		while (!isLegalPosition(board, n));
