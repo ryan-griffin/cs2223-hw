@@ -26,23 +26,17 @@ public class NQueens {
 	}
 
 	private static int[] Successor(int[] board, int n) {
-		int[] nextBoard = Arrays.copyOf(board, n);
 		int i = n - 1;
-
-		while (i >= 0 && nextBoard[i] == n)
+		while (i >= 0 && board[i] == n)
 			i--;
 
-		if (i < 0) {
-			Arrays.fill(nextBoard, 0);
-			return nextBoard;
-		}
+		if (i < 0)
+			return board;
 
-		nextBoard[i]++;
-
+		board[i]++;
 		for (int j = i + 1; j < n; j++)
-			nextBoard[j] = 0;
-
-		return nextBoard;
+			board[j] = 0;
+		return board;
 	}
 
 	private static boolean isLegalPosition(int[] board, int n) {
