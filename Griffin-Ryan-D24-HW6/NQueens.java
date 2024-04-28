@@ -20,12 +20,12 @@ public class NQueens {
 
 	private static int[] nextLegalPosition(int[] board) {
 		do
-			board = Successor(board);
+			board = successor(board);
 		while (!isLegalPosition(board));
 		return board;
 	}
 
-	private static int[] Successor(int[] board) {
+	private static int[] successor(int[] board) {
 		int n = board.length;
 		int i = n - 1;
 		while (i >= 0 && board[i] == n)
