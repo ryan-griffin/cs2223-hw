@@ -2,20 +2,31 @@ import java.util.Arrays;
 
 public class NQueens {
 	public static void main(String[] args) {
-		int[] board1 = { 1, 6, 8, 3, 5, 0, 0, 0 };
-		printNextLegal(board1);
-
-		int[] board2 = { 1, 6, 8, 3, 7, 0, 0, 0 };
-		printNextLegal(board2);
-
-		int[] board3 = { 1, 6, 8, 3, 7, 4, 2, 5 };
-		printNextLegal(board3);
+		for (int n = 4; n <= 20; n++) {
+			int count = countSolutions(n);
+			System.out.println("There are " + count + " solutions to the " + n + "-Queens problem.");
+		}
 	}
 
-	private static void printNextLegal(int[] board) {
-		System.out.println(
-				"Next legal position from " + Arrays.toString(board) + " is "
-						+ Arrays.toString(nextLegalPosition(board)));
+	private static int countSolutions(int n) {
+		int[] board = new int[n];
+		int count = 0;
+		while (board[0] < n) {
+			count++;
+			board = nextSolution(board);
+		}
+		return count;
+	}
+
+	private static int[] nextSolution(int[] board) {
+		do
+			board = nextLegalPosition(board);
+		while (!isSolution(board));
+		return board;
+	}
+
+	private static boolean isSolution(int[] board) {
+		return Arrays.stream(board).noneMatch(q -> q == 0);
 	}
 
 	private static int[] nextLegalPosition(int[] board) {
